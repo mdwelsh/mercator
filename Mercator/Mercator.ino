@@ -21,7 +21,6 @@
 #include "images/tabbyslime.h"
 #include "images/hollowknight.h"
 #include "images/deathstar.h"
-#include "images/deathstar3.h"
 
 // Image data for Game of Life.
 #define IMAGE_ROWS_life 36
@@ -36,7 +35,7 @@ typedef struct _image_metadata {
 
 #define MAKEIMAGE(_name, _columns, _rows) (image_metadata){ data: (uint8_t*)&_name[0], columns: _columns, rows: _rows, }
 
-#define NUM_IMAGES 12
+#define NUM_IMAGES 11
 image_metadata images[NUM_IMAGES] = {
   MAKEIMAGE(IMAGE_earth, IMAGE_COLUMNS_earth, IMAGE_ROWS_earth),
   MAKEIMAGE(IMAGE_pacman, IMAGE_COLUMNS_pacman, IMAGE_ROWS_pacman),
@@ -48,7 +47,6 @@ image_metadata images[NUM_IMAGES] = {
   MAKEIMAGE(IMAGE_tabby, IMAGE_COLUMNS_tabby, IMAGE_ROWS_tabby),
   MAKEIMAGE(IMAGE_hollowknight, IMAGE_COLUMNS_hollowknight, IMAGE_ROWS_hollowknight),
   MAKEIMAGE(IMAGE_deathstar, IMAGE_COLUMNS_deathstar, IMAGE_ROWS_deathstar),
-  MAKEIMAGE(IMAGE_deathstar3, IMAGE_COLUMNS_deathstar3, IMAGE_ROWS_deathstar3),
   MAKEIMAGE(IMAGE_life, IMAGE_COLUMNS_life, IMAGE_ROWS_life),
 };
 
@@ -401,8 +399,11 @@ void loop() {
 
 #ifdef ROTATE_INTERVAL
       if (cur_time - last_rotate_time > ROTATE_INTERVAL) {
-        if (shiftPotVal > 512) {
-          cur_x_offset += shiftPotVal >> 8;
+        if (shiftPotVal > 2048) {
+          cur_x_offset += (shiftPotVal - 2048) >> 8;
+          cur_x_offset %= NUM_COLUMNS;
+        } else if (shiftPotVal > 512) {
+          cur_x_offset += NUM_COLUMNS - ((shiftPotVal - 512) >> 8);
           cur_x_offset %= NUM_COLUMNS;
         }
         last_rotate_time = cur_time;
