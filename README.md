@@ -7,4 +7,4 @@ printed parts designs, and custom PCB design.
 For more details, please check out the article here:
 https://mdwdotla.medium.com/mercator-an-esp32-based-spherical-persistence-of-vision-display-a4beff4f826e
 
-![Image of Mercator](https://github.com/mdwelsh/mercator/mercator.jpg)
+![Image of Mercator](https://github.com/mdwelsh/mercator/blob/main/mercator.jpg?raw=true)
