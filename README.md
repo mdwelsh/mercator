@@ -8,4 +8,4 @@ For more details, please check out the article here:
 https://mdwdotla.medium.com/mercator-an-esp32-based-spherical-persistence-of-vision-display-a4beff4f826e
 
 ![Image of Mercator]
-(https://raw.githubusercontent.com/mdwelsh/mercator/mercator.jpg")
+(https://github.com/mdwelsh/mercator/raw/main/mercator.jpg)
